@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+    <header class="w-full z-50 lg:h-20 shadow-md fixed bg-white flex justify-center font-main font-medium">
+        <div class="w-full lg:w-5/6 flex items-center justify-between py-4 px-6"><a class="w-32 lg:w-44 lg:px-4"
+                href="/"><img src="./assets/LeeHomeNameLogo-CMySHkcQ.svg" alt="logo" class="w-full"></a>
+            <nav class="flex w-fit items-center">
+                <ul class="lg:flex space-x-6 items-center mx-4 hidden">
+                    <li><a class="hover:text-red-600" href="/">Home</a></li>
+                    <li
+                        class="h-16 flex relative flex-col justify-center cursor-pointer items-center hover:text-red-600">
+                        <div class="flex items-center justify-center">
+                            <p>Services</p><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                viewBox="0 0 512 512" class="ml-1 size-4" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 294.1L383 167c9.4-9.4 24.6-9.4 33.9 0s9.3 24.6 0 34L273 345c-9.1 9.1-23.7 9.3-33.1.7L95 201.1c-4.7-4.7-7-10.9-7-17s2.3-12.3 7-17c9.4-9.4 24.6-9.4 33.9 0l127.1 127z">
+                                </path>
+                            </svg>
+                        </div>
+                        <ul
+                            class="absolute flex hidden flex-col fixed top-14 h-fit space-y-2 justify-evenly text-darkgrey w-48 bg-white py-4 pl-4 text-sm border ">
+                            <li><a class="flex items-center border-0 text-left hover:text-red-600"
+                                    href="/services/homeshifting"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACy0lEQVR4Ae3BMWtdVQAA4M97Aobi4Hj+gUfMkEKHZOuFdiicf2BBBIesRcTFf+Do4lAHB8HBM2dQuAGHro73B2Q4wwtUOENd1MIVYk1e3kty0+SB3+d/t+wdNyfi0OQJqhsQ3IyIATuIyChoZhbML2JAwogFEjIKmhkF84oYkDCix/fISMgoaGYSzCdiQMKIHhUNBRkJGQXNDIJ5RAxIGNGjOtVQkJGQUdBcU3B9EQMSRvSozmooyEjIKGiuIbieiAEJI3pUyzUUZCRkFDRXFFxdxICEET2q1RoKMhIyCporCK4mYkDCiB7V+hoKMhIyCppLCi4vYkDCiB7V5TUUZCRkFDSXEFxOxICEET2qq2soyEjIKGjWFKwvYkDCiB7V9TUUZCRkFDRrCNYTMSBhRI9qPg0FGQkZBc0KwWoRAxJG9Kjm11CQkZBR0FwguFjEgIQRPaqb01CQkZBR0CwRLBcxIGFEj+rmNRRkJGQUNOcIzhcxIGFEj+rtaSjISMgoaP4jOCtiQMKIHtXb11CQkZBR0PxL8KaIAQkjelS3p6EgIyGjoPlHcCpiQMKIHtXtayjISMgoaF4LJhEDEkb0qO6OhoKMhIyCFhAxIGFEj+ruaSjISMgoAb9iByN6VHdXQ0FGwqOAT3GCx6hOvcBn+M7d0lDwGH9sYc/59twNL0z2narY9dqWu2/PBTobrrPhOhtuy/y2cYCPkUxG/IBv8cqMtswr4hC73vQAD/AJnqCayZb5bONn7OAYz3Bk8ghfYxeH2McrM+jM5wA7OMZ9/IQFFvgR93GMXRyYSWc+T02eYeGsBb4weWomnfl8ZHJkuV9MPjCTzny2TRaWW5i8ZyadDdfZcJ0N19lwnQ3X2XCd5U5MHro9D01OLLFluef4EoP1nVjtJd7HX9b33BLBckd4Fx/intVe4nP85mK/Yx/3rHaCb/AV/nSOvwGm48x7TgpXnwAAAABJRU5ErkJggg=="
+                                        class="mr-2 size-5">Home Shifting</a></li>
+                            <li><a class="flex items-center border-0 text-left hover:text-red-600"
+                                    href="/services/officeshifting"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACEklEQVR4AdXBv4oeVRwA0LOX38J2sUxvmRQppv/yABPYBV9A8gAKKUwRmVlsbHyERYUUFoFdcB7A9NMI2/oAgoLFFikGVBhhGeYy3x+/THLPOXHvHI8R1jPgFjcOdGL0M2ofTodnDhA4R40/8CPurOcMz1GjRmdPgcdGV3hpfYEXeILOnhLC6J0P484oHCApXFhWo5LXozNXo5LXo3NEYdk1Qt6AU3PXCHkDTh1RWBZGl6YahLwwujTVIBxZ2E1rqrFda6rxHiSFSwqXFC4pXNhNa3+tFYRlAwKNuUHegEBjbnBkYdkFKnm9vAtU8npHFpZ16OynQ2clSeHCx2OD1nYDbnHjX+Hj8RRP7a7Ds7CsRiWvR2euRiWvRyfvF7y13Rmeo0Ydll0j5A04NXeNkDfgVN5btHYTeIEnYVkYXZpqEPLC6NJUg3Acd0YRdtOaamzXmmq8B0nhksIlhUsKF3bT2l9rBWHZgEBjbpA3INCYGxxZWHaBSl4v7wKVvN6RhWUdOvvp0FlJUrikcOH/qXCOT/EbbtBbUTjcN3iJcO8rfIuvrSQc5jO8woDv0KPCF3iFX/HGCsJhWqPP8droJ9zie7R4YwXJ/s7wCHd4beoHvMMjnFlBsr+HRn/K+93ooRUkhUsKlxQuKVy4t0Fru0+MHqA198DoS/xlu43RBq3dbPznBA1aZWoDV0YnyvI3rv4BPfNkParpaKUAAAAASUVORK5CYII="
+                                        class="mr-2 size-5">Office Shifting</a></li>
+                            <li><a class="flex items-center border-0 text-left hover:text-red-600"
+                                    href="/services/packingservices"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABf0lEQVR4AdXBIWuUcRwA4Od++yMLCwMnMww0DCyGBT/A2QyGgWELggzBpEE4MRgcqHBBOdANy0AEhUXDYEX0voV11xQuXDBcGJzhDQY94eXenfyep4Ul9LCNJTmMcIhHC3iNezgnj0Vcw2rBlsp19NU3UWmpZ6LSUl8bX3ErsKzSl0dfZTkkF5ILyYXkQnIhuZBcSC4kF87eRWeoODsb6KGNT3iIEw0rmreBp9j02yZu4AVeYqwhRXPW8QS3UTDGK3zALrbwDHfwQEOK2f3AKr6hYIx9dPFdZRsH2MMVHKsMzKiY3XP0VN5jFyf+9BlX0cFjlY4ZFbPbwyFOMfJvp+iiqyFFM4b+k5BcSC4kF5ILyYXkQnIhuZBcSC4kV8zPTbzFmnqG2MGRvwjz8w5r6lvBG1MU87Oi0lLPBJdNEZILyYXkQnIhuWJ+BriEifqGpgjzcx9D9Q2wY4pifo5wQcNCciG5wE+VtjzaKqMWDnBXTvsL+ILzWMeiHEb4iM4vjpo9ohqOwlkAAAAASUVORK5CYII="
+                                        class="mr-2 size-4">Packing Services</a></li>
+                            <li><a class="flex items-center border-0 text-left hover:text-red-600"
+                                    href="/services/transportvehicle"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACE0lEQVR4Ae3BPWsTYQAA4OeuLyjBzQruin+hKTic4GZ+gKNgwMkPaMGKhkQimqFubt6sP8MUCp7/wLGTU127tBAL73DmQ1LtVXt4z6PRaDQa/7VEdQKG6GLV2dpHjt6K6rzGFlrOXgs3cSGozn3RLYydrQyfcD9VnVXR2Nkbi1ZTNZequWDaVTxGB9dx0TkXlO7iPS6pkSC6i4+iHWyjwL55E1Fi2sQ/EHAV70UvMVAjKZ7gEnYwUDMpOqJtNZTimqhQQykuivbVUKrmUr8nE313TgSliZPLnRPB7/mOHC+cE0EpUY2JvyhVc0H1En/HxLGgNFEqsK4GgsUS8zJsoC0q8BZj1cqwgbaowFuMLRCUEr82QN+0Djro4RW+OL0B+qZ10EEPr5S+OBYsl6GPI/SQi7oYYohdtJ1Ohj6O0EMu6mKIIXYxFrUdW8FDtLCDPfPe4QaeY4QDHGAXh7iNK/jgdN7hBp5jhAMcYBeHuI0r+OAnATme4pNSgXXRmig3L8cbrCl9RttyBdaV1kS5eTneYM2MgBeiLi6LEqXEcolS4mQS0xLLJWYEHGELWxYrcAddjEzrigqltj9T4A66GJnWFRVmrFjuG+4hwyG+ooVHGCLFA+w5nW+4hwyH+IoWHmGIFA+w5yeJkxmgb7FnGKnGAH2LPcPIjMTJZdhEW1RgG2PVyrCJtqjANsYajUaj0ZjxAyecbtNvXvajAAAAAElFTkSuQmCC"
+                                        class="mr-2 size-5">Transport Vehicle</a></li>
+                            <li><a class="flex items-center border-0 text-left hover:text-red-600"
+                                    href="/services/warehousing"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVR4Ae3BIWhUYQAA4O/9vjBkwXDgiWsGLywsnjDwDLYJCgODcYYJFjFsYSZXljQKrhqEgYKCRfCEwS4IGhauLIgLL5yo4ODCwVN4gzmZd29j3O4Hv89/JyxxdDXUUMNFVFBFRWECqUIXmUIHGTJsoY022o4gUV4dDVzGNMYdr59Yx3s00VJCor86bmIWE/b7jE200UaGDjKFbfQUxlBVqKKKKmqoYQpn7beNNTxHyz8kDnYdC6jbs4W3aKKJzPGqooEGZnDenhZW8NJfEvvV8RSTCh08wxrWDdc0ZnELFYVPuIOWXYlCikeYR4otPMYquk7WGOZxFxfQwxPcQy/BOF6hgR5WsIyuw5vBC6QO1sMNvHZ4Y1jCAlI0cS3FBiaR4So2jaYulrCGN2hgI0GucA6ZOEzgi9+CPZl4bNsVRC6IXIJvOCNOX0/hBy7htLh8x31/yJEbfTlyu4LIBZELIpcaLMVD3EbFcHSwigfo6SM12DIWDFcFi0iwqI/UYHMKV9A0HA28wxwW9REMVlFoGp6mQsUAQeSCyKXKy42gIHKp8hLDlSshiFwQuSByqfJyIyiIXKq8xHDlSggiF0QuiFyqvNwICiKXKi8xXLkSgsgFkQsil+AjpsTpQ8COeO3474T9AoZ8ZCJPxSZJAAAAAElFTkSuQmCC"
+                                        class="mr-2 size-5">Storage Services</a></li>
+                            <li><a class="flex items-center border-0 text-left hover:text-red-600"
+                                    href="/services/carbiketransportation"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADAklEQVR4Ae3BQWhbZQAA4C/NA4OrOKRiDoWNOaFCKUN2GDhYYQWDCHoYWFnFHRRFWmhZDhYUCxOasY0c2kPLNvDQYmGXCYKKPVSoELoeJnSYww4FPdTBhoEgObyDg/8QQ5KubdLb+z6JRCKRSCQSiUPzDt5ziNIO1+8YQwUlhyCtM0cxiYeoalbB28ihgpIuS+vMOK7iZdzVbAMV5JBDBSVdlNaZR/gcQ/gOTzQroYIccqigpEvSOvMEr+INvIi7WiuhghxyqKCkC1JaG8RpZJHRqIptbKGMk/hD8Doeam8SRcEiduyuih2sY1sLkUaX8DWO25stfIJlfIQvcUl76/gXz+NT+7OJaaz6n5Qgwhw+E/yNNWyjptlJnMUxxNjEGcS4ilhr72MAP6Pk2XpxHG+hV7CACcSeSgm+wCxiTOAWYruLkMcVRPYuxguo2bsMxnEFGazgA0+l0Ic/kcGHWLI//TiDQXuziR8czGn8gqOYRiGFSRTxG85qlsEIBgRlrKKmezIYwYCgjFXUNMvhR1TxWoRhwS3NRlFEVqMdTGFF50ZRRFajHUxhRaOf8D3excdpfIOX8BUeqZvETfTiAe7gHo7gBC7gMTYc3CRuohcPcAf3cAQncAGPsaFRDaN4LsIrgm11p3BNMI2Cugh5zKKIddy3f6dwTTCNgroIecyiiHXcV7cpONaDXkFVXR4RFlHQKEYBtxEh72DyiLCIgkYxCriNCHmN/hL092jtvGBBe/OCcw7mvGBBe/OCc9ro0VpWUNZeWdDvYLKCsvbKgn5tROpm1NWQwRA2tDYkqGLG/tWQwRA2tDYkqGJGsziFdbyptWWMaW0JF3VuGWNaW8JF7f2aQh9G0acug8uIMI3riAUR8phFjBuo2b8MLiPCNK4jFkTIYxYxbqCm0T/4NqW9ccwJtrAmGMagYALzDm4cc4ItrAmGMSiYwLw2UnY3iiKyGu1gCis6N4oishrtYAordpHybBmMYEBQxipquieDEQwIylhFTSKRSCQSiUSirf8AjmW8nmmVnyoAAAAASUVORK5CYII="
+                                        class="mr-2 size-5">Car Transportation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/about" class="hover:text-red-500">About</a></li>
+                    <li><a class="hover:text-red-600" href="/blog">Blogs</a></li>
+                    <li><a class="hover:text-red-600" href="/case-study">Case Study</a></li>
+                    <li><a href="/contact" class="hover:text-red-500">Contact</a></li>
+                </ul>
+                <div class="flex lg:text-sm space-x-4 font-semibold"><a href="/login"><button
+                            class="lg:px-6 lg:py-2 px-4
+               py-1 border lg:border-2 border-black font-semibold lg:font-bold hover:border-[#007fff] active:border-[#007fff] hover:text-[#007fff] hover:bg-[#ebf4ff] rounded-full text-black">Login</button></a><a
+                        class="lg:block hidden" href="/register"><button
+                            class="px-6 py-2 border-0 hover:bg-[#007fff] bg-[#001233] rounded-full text-white">Signup</button></a><button
+                        class="lg:hidden"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                            viewBox="0 0 512 512" class="size-7" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z">
+                            </path>
+                        </svg></button></div>
+            </nav>
+        </div>
+    </header>
+    <main class="lg:flex lg:flex-col lg:items-center font-main w-full">
+        <section
+            class="w-full h-[700px] md:h-[700px] lg:h-screen bg-custom-gradient overflow-hidden flex justify-center md:items-end items-center relative tracking-tighter">
+            <section
+                class="w-full h-[700px] md:h-[700px] lg:h-screen bg-custom-gradient overflow-hidden flex justify-center md:items-end items-center relative tracking-tighter"
+                style="background-image: linear-gradient(to bottom, #e4f3ff, #fff, #f0f8ff, #d1eaff, #93ceff);">
+                <div class="w-4/5 mt-40 flex lg:flex-row flex-col justify-start items-center md:gap-4 h-full">
+                    <div class="w-1/2 md:flex hidden justify-center items-center h-full relative mt-4"><img
+                            src="/assets/heroimage-BpjEM4Jy.webp" alt="" class="absolute -bottom-10 w-2/3 right-10">
+                    </div>
+                    <div class="md:w-1/2 w-full flex flex-col justify-start items-start lg:h-1/2 h-fit">
+                        <h2
+                            class="md:text-[32px] text-[28px] text-[#0077EF] text-start leading-8 md:text-center font-semibold -mb-1 font-main tracking-tighter">
+                            Contact us</h2>
+                        <h1
+                            class="md:text-[56px] text-[48px] leading-10 md:leading-[64px] font-bold text-[#023E7D] tracking-tighter">
+                            Reach out for reliable moving assistance.</h1>
+                        <p class="mt-2 lg:w-3/4 w-full leading-tight text-[12px] tracking-normal">Have questions or need
+                            assistance? We’re just a call or email away.</p>
+                        <div><button
+                                class="lg:px-6 lg:py-2 px-4 mr-2 py-1  border-[2px] border-solid bg-buttonbooknow border-white shadow-sm shadow-black  font-bold hover:bg-heading rounded-full text-white tracking-normal bg-blue-500 text-white-600"
+                                aria-label="Get Instant Quote">Get Instant Quote</button></div>
+                    </div>
+                    <div class="md:w-1/2 w-full flex md:hidden justify-center items-center h-1/2 relative mt-4"><img
+                            src="/assets/heroimage-BpjEM4Jy.webp" alt="" class="absolute -bottom-28 w-full right-0">
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <section class="flex justify-center items-center mt-4 z-20">
+            <section
+                class="flex flex-col items-center justify-center px-8 md:px-0 md:w-5/6 lg:flex-row-reverse lg:justify-evenly font-[Manrope]">
+                <div
+                    class="flex flex-col justify-center items-start w-full max-w-[370px] h-fit w-96 h-96 my-6 bg-[rgb(246,246,246)] drop-shadow-lg rounded-2xl p-3 font-[Manrope] align-middle ">
+                    <p class="mt-2 ml-4 text-sm font-bold text-blue-900 text-opacity-100">Get in touch</p>
+                    <h1
+                        class="flex flex-col items-start justify-center w-full mt-1 ml-4 font-extrabold font-[Poppins] text-[rgb(51,51,51)] text-center text-2xl lg:text-3xl blur-none">
+                        READY TO MOVE?<span
+                            class="text-md -mt-1 font-[Manrope] font-bold rounded-xl text-[rgb(3,83,164)] text-lg">Contact
+                            Now!</span></h1>
+                    <form class="flex flex-col align-middle items-center text-sm my-3 w-full border-none">
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 256a112 112 0 1 0-112-112 112 112 0 0 0 112 112zm0 32c-69.42 0-208 42.88-208 128v64h416v-64c0-85.12-138.58-128-208-128z">
+                                </path>
+                            </svg><input autocomplete="off" type="text" name="name" id="name" placeholder="Name"
+                                maxlength="20" required=""
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1 font-main"
+                                value="">
+                        </div>
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M478.94 370.14c-5.22-5.56-23.65-22-57.53-43.75-34.13-21.94-59.3-35.62-66.52-38.81a3.83 3.83 0 0 0-3.92.49c-11.63 9.07-31.21 25.73-32.26 26.63-6.78 5.81-6.78 5.81-12.33 4-9.76-3.2-40.08-19.3-66.5-45.78s-43.35-57.55-46.55-67.3c-1.83-5.56-1.83-5.56 4-12.34.9-1.05 17.57-20.63 26.64-32.25a3.83 3.83 0 0 0 .49-3.92c-3.19-7.23-16.87-32.39-38.81-66.52-21.78-33.87-38.2-52.3-43.76-57.52a3.9 3.9 0 0 0-3.89-.87 322.35 322.35 0 0 0-56 25.45A338 338 0 0 0 33.35 92a3.83 3.83 0 0 0-1.26 3.74c2.09 9.74 12.08 50.4 43.08 106.72 31.63 57.48 53.55 86.93 100 133.22S252 405.21 309.54 436.84c56.32 31 97 41 106.72 43.07a3.86 3.86 0 0 0 3.75-1.26A337.73 337.73 0 0 0 454.35 430a322.7 322.7 0 0 0 25.45-56 3.9 3.9 0 0 0-.86-3.86z">
+                                </path>
+                            </svg><input autocomplete="off" type="tel" name="phoneno" id="mobile" maxlength="10"
+                                pattern="[0-9]{10}" title="Must be a valid Mobile Number." placeholder="Mobile Number"
+                                required=""
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                value="">
+                        </div>
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z">
+                                </path>
+                            </svg><input autocomplete="off" type="email" name="email" id="email"
+                                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                                title="Must be a valid E-Mail Address." placeholder="Email Address" required=""
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                value="">
+                        </div>
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z">
+                                </path>
+                            </svg><input autocomplete="off" type="text" name="pickupLocation" id="location-from"
+                                placeholder="Location From" required=""
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                value="">
+                        </div>
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.891 2.006l.106 -.006l.13 .008l.09 .016l.123 .035l.107 .046l.1 .057l.09 .067l.082 .075l.052 .059l.082 .116l.052 .096c.047 .1 .077 .206 .09 .316l.005 .106c0 .075 -.008 .149 -.024 .22l-.035 .123l-6.532 18.077a1.55 1.55 0 0 1 -1.409 .903a1.547 1.547 0 0 1 -1.329 -.747l-.065 -.127l-3.352 -6.702l-6.67 -3.336a1.55 1.55 0 0 1 -.898 -1.259l-.006 -.149c0 -.56 .301 -1.072 .841 -1.37l.14 -.07l18.017 -6.506l.106 -.03l.108 -.018z">
+                                </path>
+                            </svg><input autocomplete="off" type="text" name="dropLocation" id="location-to"
+                                placeholder="Location To" required=""
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                value="">
+                        </div>
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                    d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z">
+                                </path>
+                            </svg><input autocomplete="off" type="text" name="shiftingDate" id="date" min="2025-09-08"
+                                max="2025-11-08" placeholder="Date Of Shifting"
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                value="">
+                        </div>
+                        <div class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512"
+                                class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z">
+                                </path>
+                            </svg><select
+                                class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1">
+                                <option value="" class="text-lightgrey">Select Service</option>
+                                <option value="houseShifting" class="text-lightgrey">House Shifting</option>
+                                <option value="officeShifting" class="text-lightgrey">Office Shifting</option>
+                                <option value="carBikeTransport" class="text-lightgrey">Car/Bike Transport</option>
+                                <option value="packing" class="text-lightgrey">Packing</option>
+                                <option value="storage" class="text-lightgrey">Storage</option>
+                                <option value="transportation" class="text-lightgrey">Transportation</option>
+                            </select>
+                        </div>
+                        <p class="font-popp text-xs font-medium w-11/12 text-center mt-4">Please fill all
+                            the fields to activate submit button.</p><br>
+                        <button type="submit"
+                            class="w-11/12 h-8 rounded-md text-white font-bold bg-blue-900 hover:bg-blue-700" disabled>
+                            Submit
+                        </button>
+
+                    </form>
+                </div><img fetchpriority="low" src="./assets/boxes-CC2uCN66.webp"
+                    alt="Packing Boxes - Lee Home Packers And Movers" class="my-4 w-4/5 md:w-1/4 h-auto object-contain"
+                    loading="lazy">
+                <div class="w-5/6 lg:w-80 flex flex-col items-center justify-center my-8 mb-12">
+                    <h2 class="text-3xl tracking-tighter text-center lg:text-left">Simplify Your Plans With <span
+                            class="font-bold text-blue-900">INSTANT QUOTE</span></h2><img fetchpriority="low"
+                        src="./assets/arrow-CNNNfh0z.webp" alt="Arrow pointing to instant quote"
+                        class="-ml-16 w-28 h-28" loading="lazy"><button
+                        class="px-4 py-1 lg:px-6 lg:py-2 w-fit border border-black text-xl font-semibold bg-gradient-to-r from-white to-white text-black rounded-full tracking-normal transition-all duration-300 hover:from-[#1177BF] hover:to-[#34BCEE] hover:text-white hover:border-white"
+                        aria-label="Get Instant Quote Now">Get Now</button>
+                </div>
+            </section>
+        </section>
+        <section class="w-full lg:w-3/4 mt-20 tracking-tighter mx-auto">
+            <div class="px-8 lg:px-0">
+                <h1 class="font-bold text-[36px]">Contact Us</h1>
+            </div>
+            <div class="w-full px-8 lg:px-0">
+                <p class="tracking-normal text-sm">We’d love to hear from you! Whether you have a question, need
+                    assistance with your move, or would like to request a quote, our team is ready to assist you.</p>
+                <h2 class="font-bold text-[20px] mt-8">Our Office</h2>
+                <div class="flex flex-col md:flex-row justify-center items-start md:gap-16 w-full mt-4">
+                    <div class="w-full md:w-1/2">
+                        <div class="w-full md:w-5/6 mb-6">
+                            <h1 class="text-sm tracking-normal">
+                                <span class="font-semibold" style="color: rgb(0, 119, 239);">
+                                    DELHI NCR (HQ):
+                                </span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085
+                            </h1>
+
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-norma"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">KOLKATA :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">SILIGURI
+                                    :</span> 110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">LUCKNOW :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">HYDERABAD
+                                    :</span> 110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">PATNA :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">MEERUT :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm trackingl-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">BANGALORE
+                                    :</span> 110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">BHOPAL :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">AHMEDABAD
+                                    :</span> 110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085</h1>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">CHANDIGARH
+                                    :</span> 110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">MUMBAI :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">PUNE :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">ROHTAK :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">RANCHI :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">JAIPUR :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">DEHRADUN
+                                    :</span> 110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5,
+                                Rohini, New Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">AGRA :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                        <div class="mb-6 md:w-5/6 w-full">
+                            <h1 class="text-sm tracking-normal"> <span class="font-semibold"
+                                    style="color: rgb(0, 119, 239);">INDORE :</span>
+                                110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini, New
+                                Delhi-110085</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="w-full lg:w-3/4 mt-20 tracking-tighter px-8 lg:px-0">
+            <h2 class="font-bold text-[20px] mt-8">Phone &amp; Email</h2>
+            <div class="flex flex-col md:flex-row w-full gap-4">
+                <div class="w-full md:w-2/5 lg:w-full mt-4">
+                    <h3 class="font-semibold text-[16px] ml-4 md:ml-8">Customer Support:</h3>
+                    <div class="w-full ml-4 md:ml-8">
+                        <div class="flex items-center gap-2 mt-4 ml-4 md:ml-8"><svg stroke="currentColor"
+                                fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="text-title text-[12px] text-blue-600" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                </path>
+                            </svg>
+                            <div class="w-5/6">
+                                <h1 class="text-sm font-light tracking-normal"><span class="font-medium">Phone:</span>
+                                    9310553121</h1>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 ml-4 md:ml-8"><svg stroke="currentColor"
+                                fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="text-title text-[12px] text-blue-600" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                </path>
+                            </svg>
+                            <div class="w-5/6">
+                                <h1 class="text-sm font-light tracking-normal"><span class="font-medium">Email:</span>
+                                    leehomepackers@gmail.com</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-[16px] ml-4 md:ml-8">Business Inquiries:</h3>
+                    <div class="flex items-center gap-2 mt-4 ml-8 lg:ml-16"><svg stroke="currentColor"
+                            fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                            class="text-title text-[12px]  text-blue-600" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                            </path>
+                        </svg>
+                        <div class="w-5/6">
+                            <h1 class="text-sm font-light tracking-normal"><span class="font-medium">Email:</span>
+                                leehomepackers@gmail.com</h1>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h2 class="font-bold text-[20px] ">Business Hours</h2>
+                        <div class="flex items-center gap-2 mt-4 md:ml-8 ml-4"><svg stroke="currentColor"
+                                fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="text-title text-[12px] text-blue-600" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                </path>
+                            </svg>
+                            <div class="w-5/6">
+                                <h1 class="text-sm font-light tracking-normal"><span class="font-medium">Monday to
+                                        Friday:</span> 9:00 AM - 6:00 PM</h1>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 md:ml-8 ml-4"><svg stroke="currentColor"
+                                fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="text-title text-[12px] text-blue-600" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                </path>
+                            </svg>
+                            <div class="w-5/6">
+                                <h1 class="text-sm font-light tracking-normal"><span
+                                        class="font-medium">Saturday:</span> 10:00 AM - 4:00 PM</h1>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 md:ml-8 ml-4"><svg stroke="currentColor"
+                                fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="text-title text-[12px] text-blue-600" height="1em" width="1em"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-352a96 96 0 1 1 0 192 96 96 0 1 1 0-192z">
+                                </path>
+                            </svg>
+                            <div class="w-5/6">
+                                <h1 class="text-sm font-light tracking-normal"><span class="font-medium">Sunday:</span>
+                                    Closed</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-3/5 flex justify-center items-center">
+                    <div class="w-full md:w-[580px] h-[440px] rounded-xl overflow-hidden"><iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.2489044517156!2d77.10033397529222!3d28.712106575621444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d01a7661d6ec7%3A0x70873ed94bc01352!2sLee%20Home%20Packers%20and%20Movers!5e0!3m2!1sen!2sin!4v1745922264609!5m2!1sen!2sin"
+                            width="600" height="450" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                </div>
+            </div>
+        </section>
+        <section class="w-full lg:w-3/4 my-20 tracking-tighter">
+            <section class="w-full mb-20">
+                <div class="w-full px-8 md:px-0">
+                    <h3 class="w-full px-8 md:px-0">Now, What are you waiting for?</h3>
+                    <h1 class="text-sm font-semibold text-[#0466C8]">Save More Without
+                        Compromising Quality Now!</h1>
+                </div>
+                <div class="w-full mt-2 gap-6 flex flex-col md:grid md:grid-cols-3 px-0 lg:px-0">
+                    <div class="w-full flex flex-col justify-evenly px-8 md:px-0 md:col-span-2">
+                        <p class="lg:w-4/5 w-full text-sm tracking-normal">By choosing Lee Home Packers &amp; Movers,
+                            you get a winning combination of affordability and professionalism. We ensure every rupee
+                            spent is worth the peace of mind and satisfaction of a smooth relocation.</p>
+                        <div class="lex flex-col justify-evenly w-5/6 lg:w-1/2 mt-8 lg:mt-0">
+                            <h1 class="uppercase text-[#2B2B2B] -my-2 font-bold tracking-tight">Ready to Experience the
+                                Difference?</h1>
+                            <p class="w-full lg:w-1/2 mt-4 text-sm tracking-normal">Get a free quote today and see why
+                                hundreds of families trust Lee Home Packers &amp; Movers for their relocation needs!</p>
+                        </div>
+                        <div class="flex flex-row items-center w-full lg:w-1/2 mt-4 h-[80px]">
+                            <div class="w-2/5 h-full mr-2 mt-4">
+                                <div class="flex w-full items-center h-fit"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGqSURBVHgBrVbtVcJAEJwNDVACVCB2ECtAKzBWIPxXOJD/0AGxA6xA7MAOjB2kATl3LwlEX7i7kJv3IF+TN7t3u7Mh/MezThBhjAPe8EIpAoOOZ086Rg9bPhsc72koLGmBgCgE53rC/+tGxgFTznSDYIJKDziTLwsnZ9Y1FGUIgIgzmDg4fQ5oi0CIOPorD15s9jiIoMa3F7OHOQJAMvz05MZmvwMI7lrw++iIqKy+vQc3Za7valgEBQRXc2cenBaCivawZ5mH68MKhAcLbxSuLSpIBrZlE59VOkDR/IV4ZnaGKxa4RlBBReKbdxZ+gpnuZADUeNc2PQpszPJLgHVU+7wyRdhCUKC04iW0ZZPhh0fXinblxBGDj4/PDhxQwwAn2DDTkskj7BAzGKDZhXb8/rTeUnbBQjRl1j0uR15ma4Z45KQvKenoMn1WWVfF5s6wgntP3eDPFX/BQjQpe/EyA9D4aCdYiEpFvqP+decLts/2gifhtkucYUFDd9GcFSTFEQ9Z9NWLT7gpDiGg9IgLQgIYNzzNy15MwwmehGV/b/kXm+vImEJab/xfW9OBOuTygYIAAAAASUVORK5CYII="
+                                        alt="Lee Home Packers and Movers-Calling Icon" class="mr-2 w-1/6"
+                                        loading="lazy">
+                                    <h3 class="text-[14px] font-bold text-[#0077EF]">9310553121</h3>
+                                </div>
+                                <div class="flex w-full items-center h-fit mt-2"><img
+                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAL0SURBVHgB7VftedNADH7lZgAzAWYCwgSECUgnIExA+B+IXfhPmSBhgpQJ6m4QJsBMgBdortKd/O2L7T792fd5kudOtqT3dDrpTBiDjVkgwBKE1zyL9CfI+XeEwR+ccIPvlGIi6OzTL2bFjj/xaI5xyJhIgm+0H/m+h0BsIl7VjkeLmjRn2W/WOLKT3EoChCybs+wtqqg4IoR3iCnDZAKxmbPRWx6Fdm5wx45iNpaetRTzNp2wYosfSlnA8y39wmgCTeeyygQJXWMKYt42gy2KiAyQoJpipM5FUUJ4yas+4jFo2sp1O3ptBeXI4McYhXEEyOWAi6LkyYFJhX4Cku3gY+aQNJJHnn01sd2e6SQudRZxfqz9BNxRE2SNPXfHcMeGthqhaXCJm9oxlT5aBNzK5vpS0npaV1rYgjQVlc2wTz/glRXCnBnvW8/nrbeXmAqJgsE/n35FQMppFzmeBqn9dwWrRYDwUsd9WX9sjK+oN5EGQaWdCB0CBi90nPco1nMi9B2lQZxK22GXwDm4/fups0gr3JNCtuA/POwsXNhTna25JnRJyHGV6ucDNdp3i0CRfK7X+wxIQcl0HGNrbkuHG7O0tcLgL8t3HiLuNPUkelBLkIV3j2PKtbRW7zqHB1zYtl1gZeVtEtXijn0E9uXMUy6VhFTJN7WcEMi5bpPOO6W86ox7dAjI6urlcijTJScIr5iIr8W2q2mRM1lfgwvUcVUu7zmMQ5AVXtHKEiF8ZDKi/9nO670kMdW9oF3mFbOOxGB8G3ah3vc+29gbUqyzfU+ZtwjUaVHz88fcbHucLzk5DzrLfKsXFBF4r0TuyieSyfec7RecHyMul6oTarFa15yfvZySKhXF6MZ2LrKEotKIyImz32dIbJw4gck6Dsc6dwSa4RpCBneW6xVtgXaTkaPqbtKD3XTW6dGuWqUsT+E+NNYakRDNr6I2cr3CX/NJSDESM9uOhbFk/wWHOumwXtn/mCN1QnF7CkunQtKv+4xnDOIBCpkb6iVDUP0AAAAASUVORK5CYII="
+                                        alt="Lee Home Packers and Movers-Whatsapp Logo" class="mr-2 w-1/6"
+                                        loading="lazy">
+                                    <h3 class="text-[14px] font-bold text-[#0077EF]">9311553121</h3>
+                                </div>
+                            </div>
+                            <div class="bg-slate-300 rounded-md w-[2px] h-full ml-4 mx-auto relative">
+                                <h1
+                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white md:px-2 px-1 text-sm font-bold text-[#7F7F7F]">
+                                    Or</h1>
+                            </div>
+                            <div class="w-1/2">
+                                <div class="w-full h-full flex justify-center items-center"><img
+                                        src="/assets/Order-Delivered_1-226nWU5z.png" alt="" class="w-3/4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-[516px] flex justify-center items-center px-8 md:px-0 my-8 lg:my-0">
+                        <div
+                            class="flex flex-col h-fit w-24rem max-w-[370px] justify-center items-start my-6 p-3 bg-[#F6F6F6] drop-shadow-lg rounded-2xl font-main ">
+                            <p class="mt-2 ml-4 text-sm font-bold text-[#0353A4]">Get in touch</p>
+                            <h1
+                                class="flex flex-col w-full ml-4 mt-1 items-start justify-center font-extrabold font-popp text-darkgrey text-center text-2xl lg:text-3xl blur-none">
+                                READY TO MOVE?<span
+                                    class="text-buttonmain font-bold text-lg font-main rounded-xl -mt-1 text-blue-600">Contact
+                                    Now!</span></h1>
+                            <form class="lex flex-col items-center align-middle text-sm my-3 w-full border-none">
+                                <div
+                                    class="flex items-center justify-evenly w-11/12 bg-white rounded-md overflow-hidden mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 512 512" class="size-5 w-10 h-max p-2 pr-1 mr-2 text-lightgrey"
+                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M256 256a112 112 0 1 0-112-112 112 112 0 0 0 112 112zm0 32c-69.42 0-208 42.88-208 128v64h416v-64c0-85.12-138.58-128-208-128z">
+                                        </path>
+                                    </svg><input autocomplete="off" type="text" name="name" id="name" placeholder="Name"
+                                        maxlength="20" required=""
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                        value="">
+                                </div>
+                                <div
+                                    class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 512 512" class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2"
+                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M478.94 370.14c-5.22-5.56-23.65-22-57.53-43.75-34.13-21.94-59.3-35.62-66.52-38.81a3.83 3.83 0 0 0-3.92.49c-11.63 9.07-31.21 25.73-32.26 26.63-6.78 5.81-6.78 5.81-12.33 4-9.76-3.2-40.08-19.3-66.5-45.78s-43.35-57.55-46.55-67.3c-1.83-5.56-1.83-5.56 4-12.34.9-1.05 17.57-20.63 26.64-32.25a3.83 3.83 0 0 0 .49-3.92c-3.19-7.23-16.87-32.39-38.81-66.52-21.78-33.87-38.2-52.3-43.76-57.52a3.9 3.9 0 0 0-3.89-.87 322.35 322.35 0 0 0-56 25.45A338 338 0 0 0 33.35 92a3.83 3.83 0 0 0-1.26 3.74c2.09 9.74 12.08 50.4 43.08 106.72 31.63 57.48 53.55 86.93 100 133.22S252 405.21 309.54 436.84c56.32 31 97 41 106.72 43.07a3.86 3.86 0 0 0 3.75-1.26A337.73 337.73 0 0 0 454.35 430a322.7 322.7 0 0 0 25.45-56 3.9 3.9 0 0 0-.86-3.86z">
+                                        </path>
+                                    </svg><input autocomplete="off" type="tel" name="phoneno" id="mobile" maxlength="10"
+                                        pattern="[0-9]{10}" title="Must be a valid Mobile Number."
+                                        placeholder="Mobile Number" required=""
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                        value="">
+                                </div>
+                                <div
+                                    class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                        class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path
+                                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z">
+                                        </path>
+                                    </svg><input autocomplete="off" type="email" name="email" id="email"
+                                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                                        title="Must be a valid E-Mail Address." placeholder="Email Address" required=""
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                        value="">
+                                </div>
+                                <div
+                                    class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 384 512" class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2"
+                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z">
+                                        </path>
+                                    </svg><input autocomplete="off" type="text" name="pickupLocation" id="location-from"
+                                        placeholder="Location From" required=""
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                        value="">
+                                </div>
+                                <div
+                                    class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                        class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20.891 2.006l.106 -.006l.13 .008l.09 .016l.123 .035l.107 .046l.1 .057l.09 .067l.082 .075l.052 .059l.082 .116l.052 .096c.047 .1 .077 .206 .09 .316l.005 .106c0 .075 -.008 .149 -.024 .22l-.035 .123l-6.532 18.077a1.55 1.55 0 0 1 -1.409 .903a1.547 1.547 0 0 1 -1.329 -.747l-.065 -.127l-3.352 -6.702l-6.67 -3.336a1.55 1.55 0 0 1 -.898 -1.259l-.006 -.149c0 -.56 .301 -1.072 .841 -1.37l.14 -.07l18.017 -6.506l.106 -.03l.108 -.018z">
+                                        </path>
+                                    </svg><input autocomplete="off" type="text" name="dropLocation" id="location-to"
+                                        placeholder="Location To" required=""
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                        value="">
+                                </div>
+                                <div
+                                    class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                                        class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path
+                                            d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z">
+                                        </path>
+                                    </svg><input autocomplete="off" type="text" name="shiftingDate" id="date"
+                                        min="2025-09-08" max="2025-11-08" placeholder="Date Of Shifting"
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1"
+                                        value="">
+                                </div>
+                                <div
+                                    class="flex items-center  overflow-hidden w-11/12 bg-white justify-evenly rounded-md mb-2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 384 512" class="size-5 w-10 p-2 pr-1 text-lightgrey h-max mr-2"
+                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z">
+                                        </path>
+                                    </svg><select
+                                        class="w-full text-left p-1 h-fit border-none focus:outline-none placeholder-lightgrey font-semibold ml-1 mr-1">
+                                        <option value="" class="text-lightgrey">Select Service</option>
+                                        <option value="houseShifting" class="text-lightgrey">House Shifting</option>
+                                        <option value="officeShifting" class="text-lightgrey">Office Shifting</option>
+                                        <option value="carBikeTransport" class="text-lightgrey">Car/Bike Transport
+                                        </option>
+                                        <option value="packing" class="text-lightgrey">Packing</option>
+                                        <option value="storage" class="text-lightgrey">Storage</option>
+                                        <option value="transportation" class="text-lightgrey">Transportation</option>
+                                    </select>
+                                </div>
+                                <p class="font-popp text-xs font-medium my-2 mt-4 w-11/12 visible text-center">Please
+                                    fill all the fields to activate submit button.</p><button type="submit"
+                                    class="w-11/12 h-8 rounded-md text-white font-bold bg-blue-900 hover:bg-blue-700"
+                                    disabled="">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer
+        class="w-full relative tracking-tighter font-main bg-gradient-to-b from-[#E4F3FF] px-8 pt-6 via-[#FFFFFF] to-[#F0F8FF] p-1 text-darkgrey flex flex-col lg:flex-row-reverse justify-center items-center">
+        <div class="grid lg:hidden grid-cols-1 gap-y-3 h-fit w-full my-2">
+            <div class="flex flex-col w-full justify-between">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-bold">Company</p><button class="border-0"><svg
+                            stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                            class="text-xl font-bold" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z">
+                            </path>
+                        </svg></button>
+                </div>
+            </div>
+            <div class="flex flex-col w-full justify-between">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Support</p><button class="border-0"><svg
+                            stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                            class="text-xl font-semibold" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z">
+                            </path>
+                        </svg></button>
+                </div>
+            </div>
+            <div class="flex flex-col w-full justify-between">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Services</p><button class="border-0"><svg
+                            stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                            class="text-xl font-semibold" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z">
+                            </path>
+                        </svg></button>
+                </div>
+            </div>
+            <div class="flex flex-col w-full justify-between">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Places</p><button class="border-0"><svg
+                            stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                            class="text-xl font-semibold" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z">
+                            </path>
+                        </svg></button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden lg:grid grid-cols-12 gap-y-3 md:gap-x-4 lg:gap-x-16 h-fit w-full lg:w-5/6 my-2 lg:mb-40">
+            <div class="flex lg:flex-col col-span-4 h-full">
+                <div class="mt-8 text-sm tracking-tight font-semibold text-buttonmain">
+                    <p class="text-base font-bold text-darkgrey">Registered Office:</p>
+                    <p class="underline underline-offset-4 my-1 text-heading">@Lee Home Packers And Movers</p>
+                    <p>110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini,New
+                        Delhi-110085</p>
+                    <p><span class="text-darkgrey font-bold">Email:</span>leehomepackers@gmail.com</p>
+                    <p><span class="text-darkgrey font-bold">Phone:</span> 9310553121</p>
+                </div>
+                <div class="flex flex-col w-full items-start justify-center my-8">
+                    <p class="text-base font-bold text-darkgrey">Follow us on</p>
+                    <div class="flex justify-start w-full text-md">
+                        <ul class="flex mt-2 justify-between w-4/5 max-w-80">
+                            <li><a rel="opener" aria-label="Visit our profile on Facebook now!"
+                                    href="https://www.facebook.com/leehomepackersandmovers/" target="_blank "><svg
+                                        stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                        class="size-7 hover:text-blue-700" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                                        </path>
+                                    </svg></a></li>
+                            <li><a rel="opener" aria-label="Visit our profile on Twitter now!"
+                                    href="https://twitter.com/leehomepackers?lang=en" target="_blank "><svg
+                                        stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                        class="size-7 hover:text-sky-600" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                                        </path>
+                                    </svg></a></li>
+                            <li><a rel="opener" aria-label="Visit our profile on Instagram now!"
+                                    href="https://www.instagram.com/leehomepackers/" target="_blank "><svg
+                                        stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                                        class="size-7 hover:text-pink-700" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                                        </path>
+                                    </svg></a></li>
+                            <li><a rel="opener" aria-label="Visit our profile on Youtube now!"
+                                    href="https://www.youtube.com/@leehomepackers" target="_blank "><svg
+                                        stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512"
+                                        class="size-7 hover:text-red-600" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                                        </path>
+                                    </svg></a></li>
+                            <li><a rel="opener" aria-label="Discover career opportunities now!"
+                                    href="https://www.linkedin.com/company/lee-home-packers-and-movers/posts/?feedView=all"
+                                    target="_blank "><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 448 512" class="size-7 hover:text-sky-800" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
+                                        </path>
+                                    </svg></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex col-span-2 flex-col w-full">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Places</p>
+                </div>
+                <div id="companyList" class="w-full justify-center">
+                    <div
+                        class="grid grid-cols-1  text-slate-600 w-4/5 lg:w-2/5 font-medium font-popp text-sm justify-items-start items-start">
+                        <div class="flex flex-col items-start">
+                            <ul>
+                                <li><a class="hover:text-slate-900" href="/places/delhincr">Delhi NCR</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/kolkata">Kolkata</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/siliguri">Siliguri</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/lucknow">Lucknow</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/hyderabad">Hyderabad</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <ul>
+                                <li><a class="hover:text-slate-900" href="/places/patna">Patna</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/meerut">Meerut</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/bangalore">Bangalore</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/bhopal">Bhopal</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/ahmedabad">Ahmedabad</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <ul>
+                                <li><a class="hover:text-slate-900" href="/places/chandigarh">Chandigarh</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/mumbai">Mumbai</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/pune">Pune</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/rohtak">Rohtak</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/ranchi">Ranchi</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <ul>
+                                <li><a class="hover:text-slate-900" href="/places/jaipur">Jaipur</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/dehradun">Dehradun</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/agra">Agra</a></li>
+                                <li><a class="hover:text-slate-900" href="/places/indore">Indore</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col col-span-2 w-full">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Company</p>
+                </div>
+                <div id="companyList" class="flex text-slate-600 w-full font-medium font-popp text-sm justify-center">
+                    <ul class="w-full">
+                        <li><a class="hover:text-slate-900" href="/about">About Us</a></li>
+                        <li><a class="hover:text-slate-900" href="/company/services">Services</a></li>
+                        <li><a class="hover:text-slate-900" href="/leehome/privacy-policy">Privacy Policy</a></li>
+                        <li><a class="hover:text-slate-900" href="/leehome/terms-and-condition">Terms And Conditions</a>
+                        </li>
+                        <li><a class="hover:text-slate-900" href="/leehome/cancellation-and-refund">Cancellation and
+                                Refund</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col col-span-2 w-full">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Support</p>
+                </div>
+                <div id="companyList" class="flex text-slate-600 w-full font-medium font-popp text-sm justify-center">
+                    <ul class="w-full">
+                        <li><a class="hover:text-slate-900" href="/faq">FAQs</a></li>
+                        <li><a class="hover:text-slate-900" href="/contact">Contact Us</a></li>
+                        <li><a class="hover:text-slate-900" href="/blog">Blogs</a></li>
+                        <li><a class="hover:text-slate-900" href="/case-Study">Case Study</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col w-full col-span-2">
+                <div class="flex justify-between">
+                    <p class="text-xl font-popp font-semibold">Services</p>
+                </div>
+                <div id="companyList"
+                    class="flex text-slate-600 w-full font-medium font-popp text-sm justify-center mt-0">
+                    <ul class="w-full">
+                        <li><a class="hover:text-slate-900" href="/services/homeshifting">Home Shifting</a></li>
+                        <li><a class="hover:text-slate-900" href="/services/officeshifting">Office Shifting</a></li>
+                        <li><a class="hover:text-slate-900" href="/services/transportvehicle">Transport Vehicle</a></li>
+                        <li><a class="hover:text-slate-900" href="/services/packingservices">Packing Services</a></li>
+                        <li><a class="hover:text-slate-900" href="/services/carbiketransportation">Car
+                                Transportation</a></li>
+                        <li><a class="hover:text-slate-900" href="/services/warehousing">Warehousing Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col lg:hidden w-full mb-28 h-full">
+            <div class="mt-8 text-sm tracking-tight font-semibold text-buttonmain">
+                <p class="text-base font-bold text-darkgrey">Registered Office:</p>
+                <p class="underline underline-offset-4 my-1 text-heading">@Lee Home Packers And Movers</p>
+                <p>110, 1st Floor, Aggarwal Chamber, Plot No.1, Commercial Complex, Sector-5, Rohini,New Delhi-110085
+                </p>
+                <p><span class="text-darkgrey font-bold">Email:</span>leehomepackers@gmail.com</p>
+                <p><span class="text-darkgrey font-bold">Phone:</span> 9310553121</p>
+            </div>
+            <div class="flex flex-col w-full items-start justify-center my-8">
+                <p class="text-base font-bold text-darkgrey">Follow us on</p>
+                <div class="flex justify-start w-4/5 max-w-96 text-md">
+                    <ul class="flex mt-2 justify-between xl:w-1/5 lg:w-2/5 md:w-3/5 w-4/5">
+                        <li><a rel="opener" aria-label="Visit our profile on Facebook now!"
+                                href="https://www.facebook.com/leehomepackersandmovers/" target="_blank "><svg
+                                    stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                    class="size-7 hover:text-blue-700" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                                    </path>
+                                </svg></a></li>
+                        <li><a rel="opener" aria-label="Visit our profile on Twitter now!"
+                                href="https://twitter.com/leehomepackers?lang=en" target="_blank "><svg
+                                    stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                    class="size-7 hover:text-sky-600" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z">
+                                    </path>
+                                </svg></a></li>
+                        <li><a rel="opener" aria-label="Visit our profile on Instagram now!"
+                                href="https://www.instagram.com/leehomepackers/" target="_blank "><svg
+                                    stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                                    class="size-7 hover:text-pink-700" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                                    </path>
+                                </svg></a></li>
+                        <li><a rel="opener" aria-label="Visit our profile on Youtube now!"
+                                href="https://www.youtube.com/@leehomepackers" target="_blank "><svg
+                                    stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512"
+                                    class="size-7 hover:text-red-600" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                                    </path>
+                                </svg></a></li>
+                        <li><a rel="opener" aria-label="Discover career opportunities now!"
+                                href="https://www.linkedin.com/company/lee-home-packers-and-movers/posts/?feedView=all"
+                                target="_blank "><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                    viewBox="0 0 448 512" class="size-7 hover:text-sky-800" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
+                                    </path>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full flex-col justify-center items-center absolute bottom-0">
+            <div><img src="/assets/LOGO-C7t8f6wp.svg" alt="" class="size-24"></div>
+            <div class="flex justify-center w-full text-darkgrey text-xs font-medium lg:text-sm mb-2">
+                <p>Copyright© Lee Home Packers And Movers | All rights reserved.</p>
+            </div>
+            <div class="w-full h-2 bg-gradient-to-r from-[#2390FF] to-[#0353A4]"></div>
+        </div>
+    </footer>
+</body>
+
+</html>
